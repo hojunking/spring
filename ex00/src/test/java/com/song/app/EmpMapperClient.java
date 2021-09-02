@@ -17,7 +17,7 @@ import lombok.extern.java.Log;
 
 @Log
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src\\main\\webapp\\WEB-INF\\spring\\root-context.xml")
+@ContextConfiguration("classpath:/spring/*-context.xml")
 //root-context.xml property에서 위치 확인 후 위치넣기
 public class EmpMapperClient {
 	
@@ -26,9 +26,10 @@ public class EmpMapperClient {
 	
 	@Test
 	public void mybatisTest() {
-		List<Employees> list =mybatis.selectList("com.song.app.impl.EmpMapper.getEmp","10");
-//		List<Departments> list =mybatis.selectList("com.song.app.impl.EmpMapper.getDept");
-		log.info("job_id="+list.get(0).getJob_id()); 
+//		List<Employees> list =mybatis.selectList("com.song.app.impl.EmpMapper.getEmp","10");
+		List<Departments> list =mybatis.selectList("com.song.app.impl.EmpMapper.getDept");
+//		log.info("job_id="+list.get(0).getJob_id());
+		log.info(list.get(0).getDepartment_id());
 	}//vo객체를 만들었을 경우엔 getJob_id를 사용, map을 사용할 때 단건조회는 tostring()사용한다.
 	
 	@Test @Ignore

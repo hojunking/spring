@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController //@Controller + @ResponseBody(자바객체 -> json 스트링변환)
-//ajax전용 컨트롤러
+//ajax전용 컨트롤러 restcontroller
 public class AjaxController {
 	@RequestMapping("/ex07")
 	public SampleVO	ex07(SampleVO sample) {
