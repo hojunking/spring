@@ -26,6 +26,6 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.song.app.impl" />
 	</bean> -->
- <mybatis-spring:scan base-package="com.song.web.impl"/>
+ <mybatis-spring:scan base-package="com.song.web.**.mapper"/>
 
 </beans>
