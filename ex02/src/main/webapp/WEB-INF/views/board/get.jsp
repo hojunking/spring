@@ -14,9 +14,9 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				작성일자:
-				<fmt:formatDate value="${board.updatedate }" pattern="yyyy-MM-dd" />
+				<fmt:formatDate value="${board.regdate }" type="both" dateStyle="default" timeStyle="default" />
 				<br />마지막수정:
-				<fmt:formatDate value="${board.updatedate }" pattern="yyyy-MM-dd" />
+				<fmt:formatDate value="${board.updatedate }" type="both" dateStyle="default" timeStyle="default" />
 			</div>
 			<div class="panel-body">
 
@@ -33,12 +33,12 @@
 							value="${board.writer}">
 					</div>
 					<input type="hidden" name="bno" value="${board.bno }">
-					
-					<button type="submit" class="btn btn-primary">수정하기</button>
+					<div align="right">					<button type="submit" class="btn btn-primary">수정하기</button>
 					<%-- <button type="button" class="btn btn-danger" onclick="location.href='delete?bno=${board.bno }'">삭제하기</button> 
 					get 방식으로 하기--%>
 					<button type="submit" formaction="delete" class="btn btn-danger">게시글삭제</button>
 					<button type="button" onclick="location.href='list'" class="btn btn-success">목록</button>
+					</div>
 				</form>
 			</div>
 		</div>
