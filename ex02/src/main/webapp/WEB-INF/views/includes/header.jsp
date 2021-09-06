@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>스프링 웹 프로젝트</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath }/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="${pageContext.request.contextPath }/index.jsp">SB Admin v2.0</a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath }/index.jsp">스프링 웹 프로젝트</a>
             </div>
             <!-- /.navbar-header -->
 

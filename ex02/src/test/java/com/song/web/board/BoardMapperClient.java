@@ -39,12 +39,10 @@ public class BoardMapperClient {
 	}
 	
 	@Test
-	@Ignore
 	public void read() {
 		BoardVO vo= new BoardVO();
 		vo.setBno(8);
-		boardService.read(vo);
-		log.info(boardService.toString());
+		log.info(boardService.read(vo).toString());
 	}
 	
 	@Test

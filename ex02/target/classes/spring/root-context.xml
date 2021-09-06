@@ -21,4 +21,8 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
+	<context:component-scan base-package="com.song.web"/>
 </beans>
+
+
+
