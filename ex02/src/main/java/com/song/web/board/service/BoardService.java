@@ -3,6 +3,7 @@ package com.song.web.board.service;
 import java.util.List;
 
 import com.song.web.board.domain.BoardVO;
+import com.song.web.board.domain.Criteria;
 
 public interface BoardService {
 	//등록
@@ -14,5 +15,7 @@ public interface BoardService {
 		//단건조회
 		public BoardVO read(BoardVO vo);
 		//전체조회
-		public List<BoardVO> getList();
+		public List<BoardVO> getList(Criteria cri);
+		//total count
+		public int getTotalCount(Criteria cri);
 }

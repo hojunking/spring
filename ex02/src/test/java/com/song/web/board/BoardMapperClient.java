@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.song.web.board.domain.BoardVO;
+import com.song.web.board.domain.Criteria;
 import com.song.web.board.service.BoardService;
 
 import lombok.extern.java.Log;
@@ -23,7 +24,10 @@ public class BoardMapperClient {
 	@Autowired BoardService boardService;
 	@Test
 	public void getList() {
-		log.info(boardService.getList().toString());
+		Criteria cri=new Criteria(1,10);
+		cri.setType("T");
+		cri.setKeyword("java");
+		log.info(boardService.getList(cri).toString());
 	}
 	@Test
 	@Ignore
@@ -39,6 +43,7 @@ public class BoardMapperClient {
 	}
 	
 	@Test
+	@Ignore
 	public void read() {
 		BoardVO vo= new BoardVO();
 		vo.setBno(8);
@@ -66,4 +71,5 @@ public class BoardMapperClient {
 		boardService.update(vo);
 		getList();
 	}
+	
 }

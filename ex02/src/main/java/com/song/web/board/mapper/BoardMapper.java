@@ -3,10 +3,13 @@ package com.song.web.board.mapper;
 import java.util.List;
 
 import com.song.web.board.domain.BoardVO;
+import com.song.web.board.domain.Criteria;
 
 public interface BoardMapper {
 	//CRUD 기본 interface
 	
+	//total count
+	public int getTotalCount(Criteria cri);
 	//등록
 	public int insert(BoardVO vo);
 	//수정
@@ -16,5 +19,5 @@ public interface BoardMapper {
 	//단건조회
 	public BoardVO read(BoardVO vo);
 	//전체조회
-	public List<BoardVO> getList();
+	public List<BoardVO> getList(Criteria cri);
 }

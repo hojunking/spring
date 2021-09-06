@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.song.web.board.domain.BoardVO;
+import com.song.web.board.domain.Criteria;
 import com.song.web.board.mapper.BoardMapper;
 
 @Service
@@ -26,8 +27,12 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO read(BoardVO vo) {
 		return boardMapper.read(vo);
 	}
-	public List<BoardVO> getList() {
-		return boardMapper.getList();
+	public List<BoardVO> getList(Criteria cri) {
+		return boardMapper.getList(cri);
 	}
-
+	@Override
+	public int getTotalCount(Criteria cri) {
+		return boardMapper.getTotalCount(cri);
+	}
+	
 }
