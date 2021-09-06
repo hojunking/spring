@@ -1,15 +1,23 @@
 package com.song.web.member.domain;
 
+import java.util.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class EmployeeVO {
-//	private int employee_id;
-//	private String first_name;
-//	private String last_name;
-//	private String email;
-//	private int phone_number;
-//	private hire_date;
-//	private job_id;
-//	private salary;
-//	private commission_pct;
-//	private manager_id;
-//	private department_id;
+	private int employeeId;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String phoneNumber;
+	private Date hireDate;
+	private String jobId;
+	private long salary;
+	private double commissionPct;
+	private int managerId;
+	private int departmentId;
 }

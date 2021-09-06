@@ -6,7 +6,7 @@ import com.song.web.board.domain.BoardVO;
 import com.song.web.board.domain.Criteria;
 
 public interface BoardService {
-	//등록
+		//등록
 		public int insert(BoardVO vo);
 		//수정
 		public int update(BoardVO vo);
