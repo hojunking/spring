@@ -6,7 +6,7 @@
 
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">등록</h1>
+		<h2 class="page-header"></h2>
 	</div>
 </div>
 <div class="row">
@@ -21,7 +21,6 @@
 					dateStyle="default" timeStyle="default" />
 			</div>
 			<div class="panel-body">
-
 				<form role="form" action="modify" method="POST">
 					<input type="hidden" name="pageNum" value="${cri.pageNum }">
 					<input type="hidden" name="amount" value="${cri.amount }">
@@ -50,4 +49,74 @@
 		</div>
 	</div>
 </div>
+	<!--댓글 등록-->
+	<div class="panel">
+		<form id="replyForm">
+			<input type="hidden" name="bno" value="${board.bno}">
+			<input name="replyer" value="송호준">
+			<input name="reply">
+			<button type="button" id="saveReply">댓글등록</button>
+		</form>
+	</div>
+<!-- 댓글 목록-->
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<i class="fa fa-comments fa-fw"></i>Reply
+			</div>
+			<div class="panel-body">
+				<ul class="chat">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+	<script>
+		let bno="${board.bno }";
+		$(function() {
+			//등록처리
+			$("#saveReply").on('click',function(){
+				$.ajax({
+					url:"../reply/",
+					method:"post",
+					data:$("#replyForm").serialize(),
+					dataType:"JSON",
+					success:function(data){
+						console.log(data);
+						$(".chat").append(makeLi(data));
+						//append는 뒤에 prepend는 앞에 , html은 덮어쓰기 // append는 추가
+					}
+				});
+			});
+
+			function makeLi(data){
+				return '<li class="left clearfix">'
+						+ '<div>'
+						+'   <div class="header">'
+						+	'<strong class="primary-font">'+data.replyer+'</strong>'
+						+			'<small class="pull-right text-muted">'+data.replydate+'</small>'
+						+		'</div>'
+						+	'<p>'+data.reply+'</p>'
+						+'</div>'
+						+'</li>'
+			}
+			//목록조회
+			$.ajax({
+				url:"../reply/", //(default = get method)
+				data:{bno:bno}, //"bno=377" 이렇게 써도 ajax가 다 바꿔준다.
+				dataType:"JSON",
+				success:function(datas){
+					console.log(datas);
+						str="";
+					for(i=0; i<datas.length;i++){
+						str+= makeLi(datas[i]);
+					}
+					$(".chat").html(str);
+
+				}
+			});
+			
+		})
+	</script>
 <%@include file="/WEB-INF/views/includes/footer.jsp"%>

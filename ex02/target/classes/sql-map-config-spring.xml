@@ -7,8 +7,6 @@
  	<!--camelcase 자동설정 -->
  </settings>
  	<typeAliases>
- 		 <typeAlias type="com.song.web.board.domain.BoardVO" alias="BoardVO"/> 
- 		<typeAlias type="com.song.web.member.domain.EmployeeVO" alias="EmployeeVO"/>
  		<package name="com.song.web"/>
  			
  		<!-- package 앞 공통 도메인 생략 가능 첫 글자는 소문자로 해야합니다 자동으로 만들어짐-->
