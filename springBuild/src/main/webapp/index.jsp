@@ -10,6 +10,7 @@
                     <h1 class="h3 mb-4 text-gray-800">안녕하세요!!</h1>
 
                 </div>
+                
                 <!-- /.container-fluid -->
 <%@include file="/WEB-INF/views/includes/footer.jsp"  %>
 

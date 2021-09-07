@@ -76,17 +76,14 @@
 	$(function() {
 		var actionForm = $("#actionForm")
 
-		$(".move")
-				.on(
-						"click",
-						function(e) {
-							e.preventDefault();
-							var bno = $(this).attr("href")
-							actionForm
-									.append('<input type="hidden" name="bno" value="'+bno+'">')
-							actionForm.attr("action", "get")
-							actionForm.submit();
-						})
+		$(".move").on("click",function(e) {
+			e.preventDefault();
+			var bno = $(this).attr("href")
+			actionForm
+					.append('<input type="hidden" name="bno" value="'+bno+'">')
+			actionForm.attr("action", "get")
+			actionForm.submit();
+		})
 
 		$(function() {
 			$("#pageButton a").on("click", function(e) {
