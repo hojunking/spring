@@ -49,7 +49,7 @@ public class ReplyServiceImpl implements ReplyService {
 	public ReplyPageVO getListPage(Criteria cri, Long bno) {
 			ReplyPageVO vo = new ReplyPageVO();
 			vo.setReplyCnt(map.getTotalCount(bno));
-			vo.setList(map.getList(cri, bno));
+			vo.setList(map.getListPage(cri, bno));
 		return vo;
 	}
 

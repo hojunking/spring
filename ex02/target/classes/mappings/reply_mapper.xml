@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.song.web.member.mapper.ReplyMapper">
+<mapper namespace="com.song.web.board.mapper.ReplyMapper">
 <select id="getListPage" resultType="ReplyVO">
 	SELECT RNO,BNO,REPLY, REPLYER,REPLYDATE, UPDATEDATE
 FROM(
@@ -22,7 +22,7 @@ SELECT /*+INDEX(TBL_REPLY IDX_REPLY)*/
 	FROM TBL_REPLY
 	WHERE RNO=#{rno}
 </select>
-<select id="getTotalCount" resultType="ReplyPageVO">
+<select id="getTotalCount" resultType="int">
 	<![CDATA[SELECT COUNT(RNO) 
 			FROM TBL_REPLY 
 			WHERE BNO = #{bno}]]>

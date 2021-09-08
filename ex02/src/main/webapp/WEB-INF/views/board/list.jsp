@@ -81,7 +81,7 @@
 			actionForm.attr("action", "get")
 			actionForm.submit();
 		})
-
+		
 		$(function() {
 			$("#pageButton a").on("click", function(e) {
 				e.preventDefault(); //a, submit 특성 초기화

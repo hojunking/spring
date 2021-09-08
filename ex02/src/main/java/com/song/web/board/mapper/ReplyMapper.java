@@ -12,7 +12,7 @@ public interface ReplyMapper {
 	public int insert(ReplyVO vo);
 	public int modify(ReplyVO vo);
 	public int delete(ReplyVO vo);
-	public List<ReplyVO> getList(@Param("cri") Criteria cri,
+	public List<ReplyVO> getListPage(@Param("cri") Criteria cri,
 					@Param("bno") Long bno);
 	public ReplyVO read(ReplyVO vo);
 	public int getTotalCount(Long bno);
