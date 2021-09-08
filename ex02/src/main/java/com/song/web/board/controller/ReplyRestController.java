@@ -1,7 +1,6 @@
 package com.song.web.board.controller;
 
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.song.web.board.domain.Criteria;
+import com.song.web.board.domain.ReplyPageVO;
 import com.song.web.board.domain.ReplyVO;
 import com.song.web.board.service.ReplyService;
 
@@ -25,9 +25,9 @@ public class ReplyRestController {
 	
 	//게시글 댓글만
 	@GetMapping("/")
-	public List<ReplyVO> getList(Criteria cri,
+	public ReplyPageVO getListPage(Criteria cri,
 			@RequestParam Long bno){
-		return replyService.getList(cri, bno);
+		return replyService.getListPage(cri, bno);
 		
 	}
 	//댓글조회

@@ -1,4 +1,4 @@
-package com.song.web.member.mapper;
+package com.song.web.board.mapper;
 
 import java.util.List;
 
@@ -15,6 +15,6 @@ public interface ReplyMapper {
 	public List<ReplyVO> getList(@Param("cri") Criteria cri,
 					@Param("bno") Long bno);
 	public ReplyVO read(ReplyVO vo);
-	public int getTotalCount(Criteria cri);
+	public int getTotalCount(Long bno);
 
 }

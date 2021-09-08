@@ -2,6 +2,8 @@ package com.song.web.board.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.song.web.board.domain.BoardVO;
 import com.song.web.board.domain.Criteria;
 
@@ -20,4 +22,10 @@ public interface BoardMapper {
 	public BoardVO read(BoardVO vo);
 	//전체조회
 	public List<BoardVO> getList(Criteria cri);
+	//댓글 수 업데이트
+	public void updateReplycnt(
+			@Param("bno") Long bno,
+			@Param("amount") Long amount
+			);
+	//리턴값 없어서 interface 필요 없다.
 }

@@ -18,7 +18,6 @@
 				<th>타이틀</th>
 				<th>내용</th>
 				<th>작성일자</th>
-				<th>수정일</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,11 +25,9 @@
 				<tr>
 					<td><a class="move" href="${list.bno }">${list.bno }</a></td>
 					<td>${list.writer}</td>
-					<td>${list.title }</td>
+					<td>${list.title }[${list.replycnt }]</td>
 					<td>${list.content }</td>
 					<td><fmt:formatDate value="${list.regdate }"
-							pattern="yyyy-MM-dd" /></td>
-					<td><fmt:formatDate value="${list.updatedate }"
 							pattern="yyyy-MM-dd" /></td>
 				</tr>
 			</c:forEach>
@@ -50,7 +47,7 @@
 				<option value="TWC"${pageMaker.cri.type eq 'TWC'?'selected':''}>제목 or 작성자 or 내용</option>
 			</select>
 			<input name="keyword" value="${pageMaker.cri.keyword }">
-		<input type="hidden" name="pageNum" value="1">
+		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
 		<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
 		<button class='btn btn-default'>검색</button>
 	</form>

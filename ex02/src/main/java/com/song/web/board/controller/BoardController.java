@@ -34,6 +34,7 @@ public class BoardController {
 	//단건조회(수정페이지)
 	@GetMapping("/get")
 	public void get(Model model,BoardVO vo,@ModelAttribute("cri") Criteria cri) { //bno 파라미터 던져주기 커맨드객체(vo)
+		
 		model.addAttribute("board",boardService.read(vo)); //modelAttribute -> 이름설정 해줄 때
 	}
 	//수정처리

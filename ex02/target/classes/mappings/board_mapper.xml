@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.song.web.board.mapper.BoardMapper">
+	<!-- 댓글 수 업데이트 -->
+	<update id="updateReplycnt">
+		UPDATE TBL_BOARD
+		SET REPLYCNT = REPLYCNT + #{amount}
+		WHERE BNO = #{bno}
+	
+	</update>
+	
 	<sql id="criteria">
 		<trim prefix="(" suffix=")" prefixOverrides="OR">
 				<foreach collection="typeArr" item="type">
@@ -31,7 +39,7 @@
 	
 	<select id="getList" resultType="BoardVO">
 	SELECT * FROM(
-		SELECT /*+INDEX_DESC(TBL_BOARD SYS_C007513)*/ ROWNUM RN, BNO,TITLE,CONTENT,WRITER,REGDATE
+		SELECT /*+INDEX_DESC(TBL_BOARD SYS_C007513)*/ ROWNUM RN, BNO,TITLE,CONTENT,WRITER,REGDATE,REPLYCNT
 		FROM TBL_BOARD
 		<where>
 				<include refid="criteria"></include>

@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.song.web.board.domain.Criteria;
 import com.song.web.board.domain.PageVO;
-import com.song.web.member.service.MemberServiceImpl;
+import com.song.web.member.service.MemberService;
 
 @Controller
 @RequestMapping("/member/*")
-public class MemberComtroller {
+public class MemberController {
 	
-	@Autowired MemberServiceImpl memberService;
+	@Autowired MemberService memberService; //serviceImpl 부르지마라
 	//전체조회
 	@GetMapping("/list")
 	public void list(Model model,@ModelAttribute("cri") Criteria cri) {

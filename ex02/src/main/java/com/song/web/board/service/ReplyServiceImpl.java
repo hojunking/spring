@@ -1,20 +1,22 @@
 package com.song.web.board.service;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.song.web.board.domain.Criteria;
+import com.song.web.board.domain.ReplyPageVO;
 import com.song.web.board.domain.ReplyVO;
-import com.song.web.member.mapper.ReplyMapper;
+import com.song.web.board.mapper.BoardMapper;
+import com.song.web.board.mapper.ReplyMapper;
 @Service
 public class ReplyServiceImpl implements ReplyService {
 	
 	@Autowired ReplyMapper map;
+	@Autowired BoardMapper boardMap;
 	@Override
 	public int insert(ReplyVO vo) {
-		// TODO Auto-generated method stub
+		boardMap.updateReplycnt(vo.getBno(), 1L);
 		return map.insert(vo);
 	}
 
@@ -26,15 +28,10 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Override
 	public int delete(ReplyVO vo) {
-		// TODO Auto-generated method stub
+		boardMap.updateReplycnt(vo.getBno(), -1L);
 		return map.delete(vo);
 	}
 
-	@Override
-	public List<ReplyVO> getList(Criteria cri,Long bno) {
-		// TODO Auto-generated method stub
-		return map.getList(cri,bno);
-	}
 
 	@Override
 	public ReplyVO read(ReplyVO vo) {
@@ -43,9 +40,17 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public int getTotalCount(Criteria cri) {
+	public int getTotalCount(Long bno) {
 		// TODO Auto-generated method stub
-		return map.getTotalCount(cri);
+		return map.getTotalCount(bno);
+	}
+
+	@Override
+	public ReplyPageVO getListPage(Criteria cri, Long bno) {
+			ReplyPageVO vo = new ReplyPageVO();
+			vo.setReplyCnt(map.getTotalCount(bno));
+			vo.setList(map.getList(cri, bno));
+		return vo;
 	}
 
 }

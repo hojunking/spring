@@ -19,8 +19,12 @@ public class ReplyMapperClient {
 	
 	@Test
 	public void getList() {
-		Criteria cri = new Criteria(1,20);
-		log.info(mapperService.getList(cri, 378L).toString());
+		Criteria cri = new Criteria(1,10);
+		log.info(mapperService.getListPage(cri, 2097159L).toString());
+		
+	}
+	@Test
+	public void conut() {
 		
 	}
 	

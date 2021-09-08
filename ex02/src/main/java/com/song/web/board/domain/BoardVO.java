@@ -29,6 +29,7 @@ public class BoardVO {
 	private Date regdate;
 	@JsonIgnore 								//수정일자
 	private Date updatedate;
+	private long replycnt;
 	
 	//값을 안불러 오고 싶을땐 JsonIgnore
 }
