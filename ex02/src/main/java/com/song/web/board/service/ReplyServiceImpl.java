@@ -28,6 +28,8 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Override
 	public int delete(ReplyVO vo) {
+		vo= map.read(vo);
+		System.out.println("무엇이 들었을 까요~"+vo);
 		boardMap.updateReplycnt(vo.getBno(), -1L);
 		return map.delete(vo);
 	}

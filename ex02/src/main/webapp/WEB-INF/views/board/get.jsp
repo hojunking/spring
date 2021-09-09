@@ -56,21 +56,23 @@
 		</div>
 	</div>
 </div>
-	<!--댓글 등록-->
 	<div class="panel">
+		<div class="col-lg-4">
 		<form id="replyForm">
-			<input type="hidden" name="bno" value="${board.bno}">
-			<input name="replyer" value="송호준">
-			<input name="reply">
-			<button type="button" id="saveReply">댓글등록</button>
+			<input type="hidden" name="bno" value="${board.bno}" class="form-control">
+			<input name="replyer" class="form-control" placeholder="작성자">
+			<input name="reply" class="form-control"placeholder="내용입력">
 		</form>
+		</div>
+			<button type="button" id="saveReply" class="btn btn-success">댓글등록</button>
 	</div>
+	<!--댓글 등록-->
 <!-- 댓글 목록-->
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<i class="fa fa-comments fa-fw"></i>Reply
+				<i class="fa fa-comments fa-fw"></i>댓글
 			</div>
 			<div class="panel-body">
 				<ul class="chat">
@@ -101,12 +103,12 @@
 				return '<li class="left clearfix"data-rno="'+data.rno+'">'
 						+ '<div>'
 						+'   <div class="header">'
-						+	'<strong class="primary-font">'+data.replyer+'</strong>'
-						+			'<small class="pull-right text-muted">'+data.replydate+'</small>'
+						+	'<strong class="primary-font"data-replyer="'+data.replyer+'">'+data.replyer+'</strong>'
+						+			'<small class="pull-right text-muted"data-replydate="'+data.replydate+'">'+data.replydate+'</small>'
 						+		'</div>'
-						+	'<span>'+data.reply
+						+	'<span data-reply="'+data.reply+'">'+data.reply
 						+		'<button id="del" class="btn btn-danger pull-right">삭제</button>'
-						+		'<button id="update" class="btn btn-primary pull-right">수정</button></span>'
+						+		'<button id="update" class="btn btn-success pull-right">수정</button></span>'
 						+'</div>'
 						+'</li>'
 			}
@@ -129,6 +131,7 @@
 			
 			//삭제 버튼 클릭
 			$('body').on('click','#del',function(){
+				
 				var rno = $(this).closest('li').data('rno');
 				var result = confirm("정말로 삭제하시겠습니까?");
 				var li = $(this).closest('li');
@@ -148,25 +151,30 @@
 					});  //ajax     
 				}//if
 			}); //삭제 버튼 클릭
-			
+			//댓글 수정하기
 			$('body').on('click','#update',function(){
-				var id = $('input:text[name="id"]').val();
-				var name = $('input:text[name="name"]').val();
-				var password = $('input:text[name="password"]').val();
-				var role = $('select[name="role"]').val();		
-				$.ajax({ 
-				    url: "users", 
+				var reply = $(this).closest('span').data('reply');
+				
+				var rno = $(this).closest('li').data('rno');
+				console.log(reply+rno);
+				var str ='<input type="text" value="'+reply+'">'
+				$(this).closest('.header').html(str);
+				
+				
+				
+				/* $.ajax({ 
+				    url: "../reply/", 
 				    type: 'PUT', 
 				    dataType: 'json', 
-				    data: JSON.stringify({ id: id, name:name,password: password, role: role }),
+				    data: JSON.stringify({ rno: rno, reply:reply}),
 				    contentType: 'application/json',
 				    success: function(data) { 
-				        userList();
+				        alert("수정완료!!")
 				    },
 				    error:function(xhr, status, message) { 
 				        alert(" status: "+status+" er:"+message);
 				    }
-				});
+				}); */
 			});//수정 버튼 클릭
 		})
 	
