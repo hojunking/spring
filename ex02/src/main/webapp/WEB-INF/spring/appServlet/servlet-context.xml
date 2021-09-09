@@ -27,7 +27,8 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.song.web" />
-	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</beans:bean>
 	
 	<!--  트랜잭션 처리 -->
 	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -51,4 +52,7 @@
 	</aop:config> 
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<tx:annotation-driven />
+	
+	
+	
 </beans:beans>

@@ -4,7 +4,7 @@
 package com.song.web.board.domain;
 
 import java.util.Date;
-
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -32,5 +32,7 @@ public class BoardVO {
 	private long replycnt;
 	
 	//값을 안불러 오고 싶을땐 JsonIgnore
+	
+	private List<BoardAttachVO> attachList;
 }
  

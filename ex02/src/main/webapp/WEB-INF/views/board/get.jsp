@@ -45,6 +45,13 @@
 						<a class="btn btn-success" href="list?pageNum=${cri.pageNum }&amount=${cri.amount}">목록으로</a>
 					</div>
 				</form>
+				<!--  첨부파일 여기! -->	
+					<div class="panel-heading">
+						첨부파일
+						<c:forEach var="attach" items="${board.attachList }">
+							<a href="download?uuid=${attach.uuid }">${attach.fileName }</a>
+						</c:forEach>
+					</div>
 			</div>
 		</div>
 	</div>
@@ -91,15 +98,15 @@
 			});
 
 			function makeLi(data){
-				return '<li class="left clearfix">'
+				return '<li class="left clearfix"data-rno="'+data.rno+'">'
 						+ '<div>'
 						+'   <div class="header">'
 						+	'<strong class="primary-font">'+data.replyer+'</strong>'
 						+			'<small class="pull-right text-muted">'+data.replydate+'</small>'
 						+		'</div>'
 						+	'<span>'+data.reply
-						+		'<button id="del" data-rno="'+data.rno+'" class="btn btn-danger pull-right">삭제</button>'
-						+		'<button class="btn btn-primary pull-right">수정</button></span>'
+						+		'<button id="del" class="btn btn-danger pull-right">삭제</button>'
+						+		'<button id="update" class="btn btn-primary pull-right">수정</button></span>'
 						+'</div>'
 						+'</li>'
 			}
@@ -120,30 +127,48 @@
 			});
 			//사용자 삭제 요청
 			
-		})
-		function userDelete() {
 			//삭제 버튼 클릭
 			$('body').on('click','#del',function(){
-				var rno = $(this).closest('button').data('rno');
-				var result = confirm(rno +"정말로 삭제하시겠습니까?");
+				var rno = $(this).closest('li').data('rno');
+				var result = confirm("정말로 삭제하시겠습니까?");
 				var li = $(this).closest('li');
 				if(result) {
 					$.ajax({
-						url:'/'+rno,  
+						url:'../reply/'+rno,  
 						type:'DELETE',
 						contentType:'application/json;charset=utf-8',
 						dataType:'json',
 						error:function(xhr,status,msg){
 							console.log("상태값 :" + status + " Http에러메시지 :"+msg);
 						}, success:function(data){
-							if(dta.result == true){
+							if(data == true){
 								li.remove();
-								alert("삭제완료!");
 							} //if
 						} //success
 					});  //ajax     
 				}//if
 			}); //삭제 버튼 클릭
-		}//userDelete
+			
+			$('body').on('click','#update',function(){
+				var id = $('input:text[name="id"]').val();
+				var name = $('input:text[name="name"]').val();
+				var password = $('input:text[name="password"]').val();
+				var role = $('select[name="role"]').val();		
+				$.ajax({ 
+				    url: "users", 
+				    type: 'PUT', 
+				    dataType: 'json', 
+				    data: JSON.stringify({ id: id, name:name,password: password, role: role }),
+				    contentType: 'application/json',
+				    success: function(data) { 
+				        userList();
+				    },
+				    error:function(xhr, status, message) { 
+				        alert(" status: "+status+" er:"+message);
+				    }
+				});
+			});//수정 버튼 클릭
+		})
+	
 	</script>
 <%@include file="/WEB-INF/views/includes/footer.jsp"%>
