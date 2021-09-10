@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.henry.web.departments.mapper.DepartmentsMapper">
+<select id="getList" resultType="co.henry.web.employee.domain.DepartmentsVO">
+	SELECT * FROM departments
+</select>
+<insert id="insert">
+	INSERT INTO DEPARTMENTS(DEPARTMENT_ID,
+							DEPARTMENT_NAME,
+							MANAGER_ID,
+							LOCATION_ID)
+	VALUES(#{departmentId},
+			#{departmentName},
+			#{managerId},
+			#{locationId})
+</insert>
+</mapper>

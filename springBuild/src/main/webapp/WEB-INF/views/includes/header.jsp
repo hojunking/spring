@@ -145,14 +145,14 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="${pageContext.request.contextPath }/dept">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <span>Departments</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath }/board/list">
+                <a class="nav-link" href="${pageContext.request.contextPath }/member/listEmp">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li>

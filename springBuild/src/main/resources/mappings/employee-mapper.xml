@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.henry.web.employee.mapper.EmployeeMapper">
+<sql id="criteria">
+		<trim prefix="(" suffix=")" prefixOverrides="OR">
+				<foreach collection="typeArr" item="type">
+					<trim prefix="OR">
+						<choose>
+							<when test="type=='T'.toString()"> 
+							EMPLOYEE_ID LIKE '%' || #{keyword} || '%'
+							</when> 
+						 	<when test="type=='W'.toString()">
+						 	FIRST_NAME LIKE '%' || #{keyword} || '%'
+						 	</when>
+							 <when test="type=='C'.toString()">
+							PHONE_NUMBER LIKE '%' || #{keyword} || '%'
+							</when>						
+						</choose>					
+					</trim>
+				</foreach>
+			<!-- collection->items,items->var -->
+		</trim>
+	</sql>
+	<select id="getTotalCount" resultType="int">
+		SELECT COUNT(*) FROM EMPLOYEES
+			<where>
+				<include refid="criteria"></include>
+			</where>
+	</select>
+	<select id="getList" resultType="co.henry.web.employee.domain.EmployeeVO">
+	SELECT* FROM(
+	SELECT 
+	/*+INDEX_DESC(EMPLOYEES EMP_EMP_ID_PK)*/ 
+	ROWNUM RN,
+	EMPLOYEE_ID,
+	FIRST_NAME,
+	LAST_NAME,
+	EMAIL,
+	PHONE_NUMBER,
+	HIRE_DATE,
+	JOB_ID,
+	SALARY,
+	COMMISSION_PCT,
+	MANAGER_ID,
+	DEPARTMENT_ID
+	FROM EMPLOYEES
+		<where>
+				<include refid="criteria"></include>
+		<![CDATA[AND ROWNUM <=  #{pageNum} * #{amount}]]>
+			</where>
+		)
+		WHERE RN> (#{pageNum}-1) *#{amount}
+
+	</select>
+	<insert id="insert">
+		INSERT INTO EMPLOYEES(EMPLOYEE_ID,
+								FIRST_NAME,
+								LAST_NAME,
+								EMAIL,
+								PHONE_NUMBER,
+								HIRE_DATE,
+								JOB_ID,
+								SALARY,
+								COMMISSION_PCT,
+								MANAGER_ID,
+								DEPARTMENT_ID)
+		VALUES(#{employeeId},
+				#{firstName},
+				#{lastName},
+				#{email},
+				#{phoneNumber},
+				#{hireDate},
+				#{jobId},
+				#{salary},
+				#{commissionPct},
+				#{managerId},
+				#{departmentId}
+				)
+
+		
+	</insert>
+	<select id="read" resultType="co.henry.web.employee.domain.EmployeeVO">
+	SELECT 
+	EMPLOYEE_ID,
+	FIRST_NAME,
+	LAST_NAME,
+	EMAIL,
+	PHONE_NUMBER,
+	HIRE_DATE,
+	JOB_ID,
+	SALARY,
+	COMMISSION_PCT,
+	MANAGER_ID,
+	DEPARTMENT_ID
+	FROM EMPLOYEES
+	WHERE EMPLOYEE_ID =#{employeeId}
+	</select>
+	<select id="getByEmail" resultType="co.henry.web.employee.domain.EmployeeVO">
+	SELECT 
+	EMPLOYEE_ID,
+	FIRST_NAME,
+	LAST_NAME,
+	EMAIL,
+	PHONE_NUMBER,
+	HIRE_DATE,
+	JOB_ID,
+	SALARY,
+	COMMISSION_PCT,
+	MANAGER_ID,
+	DEPARTMENT_ID
+	FROM EMPLOYEES
+	WHERE
+		<choose>
+			<when test="email !=null and email 1=''">
+			email =#{email}
+			</when>
+		<otherwise> EMPLOYEE_ID =#{employeeId}</otherwise>
+		</choose>
+	</select>
+</mapper>
