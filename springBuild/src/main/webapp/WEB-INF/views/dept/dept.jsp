@@ -7,16 +7,19 @@
 <div class="col-lg-12">
 	<h3 class="page-header">부서관리</h3>
 	<!-- /.col-lg-12 -->
-		<div id="list">
+		<div class="form-group">
+			<table id="list"class="table table-striped table-bordered table-hover">
+				<tr><td>부서번호</td>
+					<td>부서이름</td>
+					<td>부서관리자</td>
+					<td>위치</td>
+				</tr>
+			</table>
+		<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#deptModal">등록
+		</button>
 		</div>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deptModal">등록
-</button>
+
 </div>
-
-
-
-
-
 
 
 
@@ -39,11 +42,16 @@
 				<div class="form-group">
 					부서번호:<input name="departmentId"></div>
 					<div class="form-group">
-					부서이름:<input name="departmenㄴtName"></div>
+					부서이름:<input name="departmentName">
+						</div>
 					<div class="form-group">
-					매니저아이디:<input name="managerId"></div>
+					매니저아이디:<select name="managerId">
+						<option value="">선택</option>
+					</select></div>
 					<div class="form-group">
-					위치정보:<input name="locationId"></div>
+					위치정보:<select name="locationId">
+					<option value="">선택</option></select>
+					</div>
 					</div>
 					</div>
 				</form>
@@ -68,28 +76,39 @@
 			success : function(datas){
 			console.log(datas);
 			$.each(datas,function(i,data){  //each function
-			$("<div>").append($("<span>").html(data.departmentId))
-			.append($("<span>").html(data.departmentName))
+			$("<tr>")
+			.append($("<td onclick='read("+data.departmentId+")'>").html(data.departmentId))
+			.append($("<td>").html(data.departmentName))
+			.append($("<td>").html(data.managerId))
+			.append($("<td>").html(data.locationId))
 			.appendTo($("#list"));
-				} )
-			}
-			
-		});
+				});
+			$.each(datas,function(j,select) {
+				$('<option value="'+select.managerId+'">').html(select.managerId)
+				.appendTo($("select[name=managerId]"));
+				$('<option value="'+select.locationId+'">').html(select.locationId)
+				.appendTo($("select[name=locationId]"));
+			})
+		}
+	});
+};
+
+	function read(){
+		
 	}
 	$('#btnInsert').on('click',function(){
-		$("#insert")
-/* 			var id = $('input:text[name="id"]').val();
-		var name = $('input:text[name="name"]').val();
-		var passsword = $('input:text[name="password"]').val();
-		var role = $('select[name="role"]').val(); */		
 		$.ajax({ 
 		    url: "insert",  
-		    type: 'POST',  
+		    method: 'POST',  
+		    data : $("#insert").serialize(), //controller에서 requestbody로 받아야 한다.
 		    dataType: 'json', 
-		    data : JSON.stringify($("#insert").serialize()), //controller에서 requestbody로 받아야 한다.
-		    contentType: 'application/json', 
-		    success: function(response) {
-		    		deptList();
+		    success: function(data) {
+		    	if(data==true){
+		    		alert("등록되었습니다.");
+		    		$('#deptModal').modal('hide');
+		    	}else{
+		    		alert("오류발생!");
+		    	}
 		    }, 
 		    error:function(xhr, status, message) { 
 		        alert(" status: "+status+" er:"+message);
@@ -98,13 +117,8 @@
 	});//등록 버튼 클릭
 	
 	
-})
+});
 </script>
-
-
-
-
-
 
 
 

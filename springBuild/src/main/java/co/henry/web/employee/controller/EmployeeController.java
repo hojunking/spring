@@ -20,9 +20,6 @@ import co.henry.web.departments.service.DepartmentsSerivce;
 import co.henry.web.employee.domain.EmployeeVO;
 import co.henry.web.employee.service.EmployeeSerivce;
 import co.henry.web.job.service.JobService;
-
-
-
 	
 	@Controller
 	@RequestMapping("/member/*")
@@ -44,6 +41,7 @@ import co.henry.web.job.service.JobService;
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("jobs", jobsservice.getList());
 			map.put("depts", deptservice.getList());
+			System.out.println(map);
 			return map;
 		}//등록폼
 		@GetMapping("/insertEmp")
@@ -51,14 +49,15 @@ import co.henry.web.job.service.JobService;
 			return "member/insertEmp";
 		}
 		//등록폼
-	  @PostMapping("/insertEmp") 
-	  public String insert(@PathVariable EmployeeVO vo,RedirectAttributes rttr) {
+	  @PostMapping("/insertEmp")
+	  public String insert(EmployeeVO vo,RedirectAttributes rttr) {
+		  System.out.println("여기로 와라!"+vo);
 		  service.insert(vo);
 		  rttr.addFlashAttribute("result",vo.getEmployeeId());
-		  return "redirect:member/listEmp";
+		  return "redirect:/member/listEmp";
 	  }
 	  //수정폼
-	  @PostMapping("/updateEmp") 
+	  @PostMapping("/updateEmp")
 	  public String updateForm(EmployeeVO vo,Model model) {
 		  model.addAttribute("emp",service.read(vo));
 		  return "member/insertEmp";

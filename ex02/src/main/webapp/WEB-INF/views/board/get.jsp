@@ -84,6 +84,7 @@
 	<script>
 		let bno="${board.bno }";
 		$(function() {
+			list();
 			//등록처리
 			$("#saveReply").on('click',function(){
 				$.ajax({
@@ -106,12 +107,13 @@
 						+	'<strong class="primary-font"data-replyer="'+data.replyer+'">'+data.replyer+'</strong>'
 						+			'<small class="pull-right text-muted"data-replydate="'+data.replydate+'">'+data.replydate+'</small>'
 						+		'</div>'
-						+	'<span data-reply="'+data.reply+'">'+data.reply
+						+	'<span data-reply="'+data.reply+'"><p id="data">'+data.reply+'</p>'
 						+		'<button id="del" class="btn btn-danger pull-right">삭제</button>'
-						+		'<button id="update" class="btn btn-success pull-right">수정</button></span>'
+						+		'<button id="updateForm" class="btn btn-success pull-right">수정</button></span>'
 						+'</div>'
 						+'</li>'
 			}
+			function list(){
 			//목록조회
 			$.ajax({
 				url:"../reply/", //(default = get method)
@@ -127,6 +129,7 @@
 
 				}
 			});
+			};
 			//사용자 삭제 요청
 			
 			//삭제 버튼 클릭
@@ -151,31 +154,41 @@
 					});  //ajax     
 				}//if
 			}); //삭제 버튼 클릭
-			//댓글 수정하기
-			$('body').on('click','#update',function(){
+			//수정 버튼 클릭
+			$('body').on('click','#updateForm',function(){
 				var reply = $(this).closest('span').data('reply');
 				
+				console.log(reply);
+				var str ='수정하기 <input type="text" id="modify" value="'+reply+'">'
+						+'<button id="update" class="btn btn-success">수정</button>';
+				$(this).closest('span').append(str);
+				$(this).closest("#updateForm").remove();
+				
+				// $('span').contents().unwrap().wrap( '<input>' );
+			});
+			//댓글 수정하기	
+			$('body').on('click','#update',function(){
 				var rno = $(this).closest('li').data('rno');
-				console.log(reply+rno);
-				var str ='<input type="text" value="'+reply+'">'
-				$(this).closest('.header').html(str);
-				
-				
-				
-				/* $.ajax({ 
+				var reply = $('#modify').val();
+				console.log(reply);
+				$.ajax({ 
 				    url: "../reply/", 
 				    type: 'PUT', 
 				    dataType: 'json', 
 				    data: JSON.stringify({ rno: rno, reply:reply}),
 				    contentType: 'application/json',
 				    success: function(data) { 
-				        alert("수정완료!!")
+				        alert("수정완료!!");
+				        list();
 				    },
 				    error:function(xhr, status, message) { 
 				        alert(" status: "+status+" er:"+message);
 				    }
-				}); */
-			});//수정 버튼 클릭
+				});
+				
+				
+			})
+			
 		})
 	
 	</script>

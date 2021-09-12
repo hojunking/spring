@@ -2,6 +2,9 @@ package co.henry.web.employee.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,15 +12,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EmployeeVO {
-	private int employeeId;
+	private long employeeId;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String phoneNumber;
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
 	private Date hireDate;
 	private String jobId;
 	private long salary;
 	private double commissionPct;
-	private int managerId;
-	private int departmentId;
+	private long managerId;
+	private long departmentId;
 }

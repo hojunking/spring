@@ -52,7 +52,7 @@ public class ReplyRestController {
 	@DeleteMapping("/{rno}")
 	public boolean delete(@PathVariable Long rno,ReplyVO vo) {
 		vo.setRno(rno);
-		int r= replyService.delete(vo);
+		int r= replyService.delete(vo); 
 		return r==1 ? true : false;
 	}
 	

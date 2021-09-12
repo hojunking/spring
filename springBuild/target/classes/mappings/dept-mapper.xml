@@ -14,4 +14,17 @@
 			#{managerId},
 			#{locationId})
 </insert>
+<update id="update">
+	UPDATE DEPARTMENTS SET DEPARTMENT_ID=#{departmentId},
+							DEPARTMENT_NAME=#{departmentName},
+							MANAGER_ID=#{managerId},
+							LOCATION_ID=#{locationId}
+	WHERE DEPARTMENT_ID =#{departmentId}
+
+</update>
+
+<select id="read" resultType="co.henry.web.employee.domain.DepartmentsVO">
+	SELECT * FROM DEPARTMENTS
+	WHERE DEPARTMENT_ID = #{department_id}
+</select>
 </mapper>
