@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@include file="/WEB-INF/views/includes/header.jsp"%>
 <div class="container-fluid">
 	<h2 class="h3 mb-2 text-gray-800">상세보기</h2>
 	</div>

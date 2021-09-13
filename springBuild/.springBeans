@@ -7,10 +7,13 @@
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
-		<config>src/test/resources/spring/root-context.xml</config>
+		<config>src/main/resources/spring/security-context.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/spring/aop-context.xml</config>
+		<config>src/main/resources/spring/mybatis-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
+		<config>src/main/resources/spring/root-context.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
