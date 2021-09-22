@@ -36,7 +36,7 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		
+		//application programming interface http status page not found
 		return "home";
 	}
 
