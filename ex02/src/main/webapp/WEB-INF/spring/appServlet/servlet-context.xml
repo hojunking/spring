@@ -38,20 +38,20 @@
 	
 
 	<!-- Transaction Advice 설정 -->
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	<!-- <tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="get*" read-only="true"/> <!--  insert 구문에 x -->
+			<tx:method name="get*" read-only="true"/>  insert 구문에 x
 			<tx:method name="*"/>
 		</tx:attributes>
-	</tx:advice>
+	</tx:advice> -->
 	
 	<!-- Transaction AOP 설정 자동은로 @transactional 설정해줌--> 
- 	<aop:config>
+ 	<!-- <aop:config>
 		<aop:pointcut expression="execution(* com.song.web..*Service.*(..))" id="txPointCut"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
 	</aop:config> 
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-	<tx:annotation-driven />
+	<tx:annotation-driven /> -->
 	
 	
 	

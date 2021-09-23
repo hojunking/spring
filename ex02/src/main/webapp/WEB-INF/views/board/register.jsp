@@ -75,7 +75,7 @@
 		$.ajax({
 			processData : false,
 			contentType : false,
-			url : "../uploadAjaxAction",
+			url : "../uploadAjaxAction", // /web/uploadAjaxAction
 			method : 'post',
 			data : formData,
 			success : function(result) {

@@ -15,21 +15,20 @@
 
 
 	<div><img src="${pageContext.request.contextPath }/resources/사진.jpg" id="robot"></div>
-    <button id="btn1">숨기기</button>
+    <button id="btn1" class="my">숨기기</button>
     <button id="btn2">보이기</button>
     
     <select id ="fruit"></select>
-	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
-  $('#btn1').on("click",function(){
-	//   $('#robot').css("display","none");
-	$("#robot").toggle();
-  });
-  $('#btn2').on("click",function(){
-	//   $('#robot').css("display","show");
-	// $("#robot").slideDown();
-	$('#robot').attr('src','${pageContext.request.contextPath }/resources/logo1.jpg');
-  });
+   var win;
+   $('div:eq(0)').on("click",function(){
+	   win=window.open("","test","width=300,height=300");
+
+   });
+   $('.my').on('click',function(){
+	   win.close();
+   })
 </script>
 </body>
 </html>
