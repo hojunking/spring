@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -62,7 +61,6 @@ import co.henry.web.job.service.JobService;
 		  model.addAttribute("emp",service.read(vo));
 		  return "member/insertEmp";
 	  }
-	  
 	@RequestMapping("/empSearch")
 	public String empSearch(Model model,EmployeeVO vo,Criteria cri) {
 		cri.setAmount(10);

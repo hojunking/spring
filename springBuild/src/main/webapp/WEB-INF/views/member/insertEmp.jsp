@@ -144,7 +144,8 @@
 			</tr>
 			<tr>
 				<th>입사일</th>
-				<th><input type="date" name="hireDate" value="${emp.hireDate }"></th>
+				<th>
+				<input type="date" name="hireDate" value="<fmt:formatDate value="${emp.hireDate }" type="both" pattern="yyyy-MM-dd"/>"></th>
 			</tr>
 			<tr>
 				<th>직무</th>
