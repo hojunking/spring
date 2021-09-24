@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<security:http pattern="/css/**" security="none"/>
+<!-- <security:http pattern="/css/**" security="none"/>
 <security:http pattern="/resources/**" security="none"/>
  <security:http>
 <security:intercept-url pattern="/all/*" access="permitAll()"/>
@@ -20,7 +20,7 @@
 		 			authentication-success-handler-ref="CustomLogin"
 		 			default-target-url="/top.jsp"/>
 
-<!-- 		 			password-parameter="" 파라미터 이름이 같아서-->
+		 			password-parameter="" 파라미터 이름이 같아서
 <security:logout logout-url="/logout" logout-success-url="/top.jsp"/>
 <security:access-denied-handler error-page="/accessError.jsp"/>
 
@@ -37,11 +37,11 @@
 	authorities-by-username-query
 	="select id,'ROLE_'||upper(role) from users where id=?"/>
 	<security:password-encoder hash="bcrypt"/>
-<!-- <security:user-service>
+<security:user-service>
 <security:user name="user" password="{noop}1234" authorities="ROLE_USER"/>
 <security:user name="admin" password="{noop}1234" authorities="ROLE_ADMIN"/>
-</security:user-service> -->
+</security:user-service>
 </security:authentication-provider>
-</security:authentication-manager>
+</security:authentication-manager> -->
 
 </beans>

@@ -22,21 +22,18 @@ implements AuthenticationSuccessHandler{
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		// TODO Auto-generated method stub
-			log.info("===============");
-			log.info("login handler");
-			List<String> roleNames= new ArrayList<String>();
-			authentication.getAuthorities().forEach(auth->
-												{roleNames.add(auth.getAuthority());
-												});
-			String path =request.getContextPath();
-			if(roleNames.contains("ROLE_ADMIN")) {
-				response.sendRedirect(path+"admin/admin.jsp");
-				
-			}else if(roleNames.contains("ROLE_USER")) {
-				response.sendRedirect(path+"user/user.jsp");
-			}else {
-				response.sendRedirect("top.jsp");
-			}
+		/*
+		 * log.info("==============="); log.info("login handler"); List<String>
+		 * roleNames= new ArrayList<String>();
+		 * authentication.getAuthorities().forEach(auth->
+		 * {roleNames.add(auth.getAuthority()); }); String path
+		 * =request.getContextPath(); if(roleNames.contains("ROLE_ADMIN")) {
+		 * response.sendRedirect(path+"admin/admin.jsp");
+		 * 
+		 * }else if(roleNames.contains("ROLE_USER")) {
+		 * response.sendRedirect(path+"user/user.jsp"); }else {
+		 * response.sendRedirect("top.jsp"); }
+		 */
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import co.henry.web.departments.service.DepartmentsSerivce;
@@ -21,6 +22,12 @@ public class DepartmentsController {
 	public String dept() {
 		return "dept/dept";
 	}
+	// 등록페이지
+	@GetMapping("Test")
+	public String paymentTest() {
+		return "dept/paymentTest";
+	}
+	
 	
 	//ajax를 통한 crud
 	@GetMapping("deptList")
