@@ -25,10 +25,8 @@ public class DepartmentsController {
 	// 등록페이지
 	@GetMapping("Test")
 	public String paymentTest() {
-		return "dept/paymentTest";
+		return "paymentTest";
 	}
-	
-	
 	//ajax를 통한 crud
 	@GetMapping("deptList")
 	@ResponseBody
