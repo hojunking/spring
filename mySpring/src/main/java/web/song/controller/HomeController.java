@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import lombok.extern.java.Log;
+
 /**
  * Handles requests for the application home page.
  */
@@ -35,5 +37,11 @@ public class HomeController {
 		
 		return "home";
 	}
+@RequestMapping("/main")
+public String main() {
+	return "main";
+}
+	
+	
 	
 }
