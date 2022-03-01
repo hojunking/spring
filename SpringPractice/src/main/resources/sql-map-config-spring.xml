@@ -7,6 +7,7 @@
  	<!--camelcase 자동설정 -->
  </settings>
  	<typeAliases>
+ 		<typeAlias type="co.song.web.employee.domain.EmployeeVO" alias="emp"/>
  		<package name="co.song.web"/>
  		<!-- package 앞 공통 도메인 생략 가능 첫 글자는 소문자로 해야합니다 -->
  	</typeAliases>

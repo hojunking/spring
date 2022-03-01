@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.song.web.employee.mapper.EmployeeMapper">
-<sql id="getList">
-	SELECT * FROM employees
-</sql>
 
+<select id ="list" resultType="emp">
+	SELECT * FROM employees
+</select>
+
+<select id="getList" resultType="co.song.web.employee.domain.EmployeeVO">
+	SELECT * FROM employees
+	WHERE EMPLOYEE_ID = #{employeeId}
+</select>
 </mapper>

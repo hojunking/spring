@@ -11,9 +11,12 @@ import co.song.web.employee.mapper.EmployeeMapper;
 public class EmployeeImpl implements EmployeeService {
 	@Autowired EmployeeMapper map;
 	@Override
-	public List<EmployeeVO> getList() {
-		
-		return map.getList();
+	public List<EmployeeVO> list() {
+		return map.list();
+	}
+	@Override
+	public List<EmployeeVO> getList(EmployeeVO vo) {
+		return map.getList(vo);
 	}
 
 }
