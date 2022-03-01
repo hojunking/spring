@@ -3,11 +3,47 @@
 <mapper namespace="co.song.web.employee.mapper.EmployeeMapper">
 
 <select id ="list" resultType="emp">
-	SELECT * FROM employees
+	SELECT * FROM EMPLOYEES
 </select>
 
 <select id="getList" resultType="co.song.web.employee.domain.EmployeeVO">
-	SELECT * FROM employees
+	SELECT * FROM EMPLOYEES
 	WHERE EMPLOYEE_ID = #{employeeId}
 </select>
+
+<insert id="insert">
+	INSERT INTO EMPLOYEES(EMPLOYEE_ID,
+							FIRST_NAME,
+							LAST_NAME,
+							EMAIL,
+							PHONE_NUMBER,
+							HIRE_DATE,
+							JOB_ID,
+							SALARY,
+							COMMISSION_PCT,
+							MANAGER_ID,
+							DEPARTMENT_ID)
+	VALUES(#{employeeId},
+			#{firstName},
+			#{lastName},
+			#{email},
+			#{phoneNumber},
+			#{hireDate},
+			#{jobId},
+			#{salary},
+			#{commissionPct},
+			#{managerId},
+			#{departmentId})
+			
+	
+</insert>
+
+
+<update id="update">
+	UPDATE EMPLOYEES(first_name,
+					 salary,
+					 department_id)
+	SET(#{firstName},#{salary},#{departmentId})
+	
+</update>
 </mapper>

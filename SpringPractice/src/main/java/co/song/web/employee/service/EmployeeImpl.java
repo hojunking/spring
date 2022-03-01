@@ -18,5 +18,20 @@ public class EmployeeImpl implements EmployeeService {
 	public List<EmployeeVO> getList(EmployeeVO vo) {
 		return map.getList(vo);
 	}
+	@Override
+	public int insert(EmployeeVO vo) {
+		// TODO Auto-generated method stub
+		return map.insert(vo);
+	}
+	@Override
+	public int update(EmployeeVO vo) {
+		// TODO Auto-generated method stub
+		return map.update(vo);
+	}
+	@Override
+	public int delete(EmployeeVO vo) {
+		// TODO Auto-generated method stub
+		return map.delete(vo);
+	}
 
 }

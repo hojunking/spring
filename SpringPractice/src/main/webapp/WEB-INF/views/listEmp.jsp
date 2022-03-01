@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div align="center">
-		<table>
+		<table border="1">
 			<thead>
 				<tr>
 					<th>아이디</th>
@@ -19,6 +19,10 @@
 					<th>전화번호</th>
 					<th>입사일</th>
 					<th>직무</th>
+					<th>급여</th>
+					<th>커미션</th>
+					<th>매니저아이디</th>
+					<th>부서</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,7 +33,12 @@
 						<td>${List.lastName }</td>
 						<td>${List.email }</td>
 						<td>${List.phoneNumber }</td>
+						<td>${List.hireDate }</td>
 						<td>${List.jobId }</td>
+						<td>${List.salary }</td>
+						<td>${List.commissionPct }</td>
+						<td>${List.managerId }</td>
+						<td>${List.departmentId }</td>
 					</tr>
 				</c:forEach>
 			</tbody>
