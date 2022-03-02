@@ -1,7 +1,6 @@
 package co.song.web;
 
 
-import java.rmi.server.ServerCloneException;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -20,22 +19,51 @@ import lombok.extern.java.Log;
 	"file:src\\main\\webapp\\WEB-INF\\spring\\appServlet\\servlet-context.xml"})
 public class MybatisControllerTest {
 	
-	EmployeeVO emp = new EmployeeVO();
 	@Autowired EmployeeService service;
 	
 	@Test
 	@Ignore
 	public void test1() {
+		EmployeeVO emp = new EmployeeVO();
+
 		log.info(emp.getEmployeeId());
 	}
 	@Test
+	@Ignore
 	public void getList() {
+		EmployeeVO emp = new EmployeeVO();
 		emp.setEmployeeId("100");
 		log.info(service.getList(emp).toString());
 	}
 	@Test
 	@Ignore
 	public void test2() {
+		log.info(service.list().toString());
+	}
+	
+	@Test
+	public void test3() {
+		EmployeeVO emp = new EmployeeVO();
+		emp.setEmployeeId("199");
+		emp.setFirstName("song");
+		emp.setLastName("hojun");
+		emp.setEmail("song@naver.com");
+		emp.setPhoneNumber("01099003097");
+		emp.setHireDate("2022-03-02");
+		emp.setJobId("AD_VP");
+		emp.setSalary("2000");
+		emp.setCommissionPct("0.2");
+		emp.setManagerId("101");
+		emp.setDepartmentId("10");
+		service.insert(emp);
+		log.info(service.list().toString());
+		emp.setFirstName("jang");
+		emp.setSalary("150000");
+		emp.setDepartmentId("10");
+		emp.setEmployeeId("199");
+		service.update(emp);
+		log.info(service.getList(emp).toString());
+		service.delete(emp);
 		log.info(service.list().toString());
 	}
 }
