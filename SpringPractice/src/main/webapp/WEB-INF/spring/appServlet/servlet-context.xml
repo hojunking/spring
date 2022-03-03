@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
@@ -19,8 +20,21 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="2" />
 	</beans:bean>
 	
+	<beans:bean
+      class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+      p:order="1"
+      p:viewClass="org.springframework.web.servlet.view.tiles3.TilesView" />
+   <!--Don't add suffix or prefix like you do with .jsp files -->
+   <beans:bean id="tilesConfigurer"
+      class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+      <beans:property name="definitions">
+         <beans:value>/WEB-INF/tiles.xml</beans:value>
+      </beans:property>
+   </beans:bean>
+   
 	<context:component-scan base-package="co.song.web" />
 	
 </beans:beans>
