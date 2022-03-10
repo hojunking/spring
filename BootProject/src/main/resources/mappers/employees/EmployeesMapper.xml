@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.song.bootproject.employees.mapper.EmployeesMapper">
+    <select id="getList" resultType="EmployeeVO">
+        SELECT * FROM EMPLOYEES
+    </select>
+    <select id="read" resultType="EmployeeVO">
+        SELECT * FROM EMPLOYEES
+        WHERE employee_id =#{employeeId};
+    </select>
+    <delete id="delete">
+        DELETE FROM employees
+        WHERE employee_id = #{employeeId}
 
+    </delete>
+    <insert id="insert">
+        <selectKey keyProperty="employeeId" resultType="int">
+            SELECT EMPLOYEES_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO EMPLOYEES(employee_id,
+                              first_name,
+                              last_name,
+                              email,
+                              phone_number,
+                              hire_date,
+                              job_id,
+                              salary,
+                              commission_pct,
+                              manager_id,
+                              department_id)
+        VALUES (#{employeeId},
+                #{firstName},
+                #{lastName},
+                #{email},
+                #{phoneNumber},
+                default,
+                #{jobId},
+                #{salary},
+                null,
+                null,
+                null)
+    </insert>
+    <update id="update">
+    UPDATE employees SET first_name = #{firstName},
+                         last_name = #{lastName},
+                         hire_date =#{hireDate},
+                         salary =#{salary}
+    WHERE employee_id = #{employeeId}
+
+
+    </update>
 
 </mapper>
