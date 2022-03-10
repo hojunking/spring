@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.song.bootproject.employees.mapper.EmployeesMapper">
+<mapper namespace="com.song.bootproject.mapper.EmployeesMapper">
     <select id="getList" resultType="EmployeeVO">
         SELECT * FROM EMPLOYEES
     </select>
     <select id="read" resultType="EmployeeVO">
         SELECT * FROM EMPLOYEES
-        WHERE employee_id =#{employeeId};
+        WHERE employee_id =#{employeeId}
     </select>
     <delete id="delete">
         DELETE FROM employees
