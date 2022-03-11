@@ -1,6 +1,7 @@
-package com.song.bootproject.service;
+package com.song.bootproject.employees.service;
 
-import com.song.bootproject.domain.EmployeeVO;
+import com.song.bootproject.employees.domain.EmployeeVO;
+
 import java.util.List;
 
 public interface EmployeesService {

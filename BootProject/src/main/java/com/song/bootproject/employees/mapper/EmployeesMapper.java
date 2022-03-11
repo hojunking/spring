@@ -1,6 +1,6 @@
-package com.song.bootproject.mapper;
+package com.song.bootproject.employees.mapper;
 
-import com.song.bootproject.domain.EmployeeVO;
+import com.song.bootproject.employees.domain.EmployeeVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

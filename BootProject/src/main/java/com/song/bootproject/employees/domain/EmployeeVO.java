@@ -1,4 +1,4 @@
-package com.song.bootproject.domain;
+package com.song.bootproject.employees.domain;
 
 import lombok.Data;
 

@@ -1,7 +1,7 @@
-package com.song.bootproject.service;
+package com.song.bootproject.employees.service;
 
-import com.song.bootproject.domain.EmployeeVO;
-import com.song.bootproject.mapper.EmployeesMapper;
+import com.song.bootproject.employees.domain.EmployeeVO;
+import com.song.bootproject.employees.mapper.EmployeesMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
