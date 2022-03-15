@@ -13,6 +13,6 @@ public class EmployeeVO {
     private String jobId;
     private String salary;
     private String commission;
-    private String manageId;
+    private String managerId;
     private int departmentId;
 }
