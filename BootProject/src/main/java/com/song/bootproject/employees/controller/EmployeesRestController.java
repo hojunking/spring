@@ -34,8 +34,6 @@ public class EmployeesRestController {
     public void update(EmployeeVO vo){
         service.update(vo);
     }
-
-
     @GetMapping(path = "/test")
     public String Test() {
         return "test";

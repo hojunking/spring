@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Service //bean에 service 등록
@@ -30,8 +31,26 @@ public class UserServiceDAO { //DB을 읽거나 수정 -> DAO
     }
 
     public User findOne(Integer id){
-        for(User user : users){
+        /*for(User user : users){ //for each문
             if(user.getId() == id){
+                return user;
+            }
+        }*/
+        Iterator<User> it = users.iterator();
+        while(it.hasNext()){
+            User user = it.next();
+            if(user.getId() == id)
+                return user;
+        }
+        return null;
+    }
+    public User deleteById(int id) {
+        Iterator<User> iterator = users.iterator();
+
+        while (iterator.hasNext()) { //iterator 다음 인덱스
+            User user = iterator.next();
+            if(user.getId() == id){
+                iterator.remove();
                 return user;
             }
         }
