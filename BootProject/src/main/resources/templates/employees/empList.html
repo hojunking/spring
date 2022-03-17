@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="~{layout/layout}">
+<body>
+    <th:block layout:fragment="content">
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <h2 class="h3 mb-2 text-gray-800">Tables</h2>
+
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%"
+                               cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Hire Date</th>
+                                <th>Job Id</th>
+                                <th>Salary</th>
+                                <th>Commission</th>
+                                <th>Manager Id</th>
+                                <th>Department Id</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <th:block th:each="emp : ${list}">
+                                <tr>
+                                    <td th:text="${emp.employeeId}"></td>
+                                    <td th:text="${emp.firstName}"></td>
+                                    <td th:text="${emp.lastName}"></td>
+                                    <td th:text="${emp.email}"></td>
+                                    <td th:text="${emp.phoneNumber}"></td>
+                                    <td th:text="${emp.hireDate}"></td>
+                                    <td th:text="${emp.jobId}"></td>
+                                    <td th:text="${emp.salary}"></td>
+                                    <td th:text="${emp.commission}"></td>
+                                    <td th:text="${emp.managerId}"></td>
+                                    <td th:text="${emp.departmentId}"></td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </th:block>
+</body>
+</html>
