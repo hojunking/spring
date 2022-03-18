@@ -21,5 +21,12 @@ public class EmployeeController {
         model.addAttribute("list",service.getList());
         return "employees/empList";
     }
-
+    
+    @GetMapping("/getEmp")
+    public String getEmp(Model model){
+        EmployeeVO vo = new EmployeeVO();
+        vo.setEmployeeId(4);
+        model.addAttribute("emp", service.read(vo));
+        return "employees/empList";
+    }
 }
