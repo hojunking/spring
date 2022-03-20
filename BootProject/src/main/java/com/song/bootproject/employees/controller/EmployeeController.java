@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -22,11 +23,11 @@ public class EmployeeController {
         return "employees/empList";
     }
     
-    @GetMapping("/getEmp")
-    public String getEmp(Model model){
+    @GetMapping("/getEmp/{id}")
+    public String getEmp(@PathVariable int id,Model model){
         EmployeeVO vo = new EmployeeVO();
-        vo.setEmployeeId(4);
-        model.addAttribute("emp", service.read(vo));
-        return "employees/empList";
+        vo.setEmployeeId(id);
+        model.addAttribute("getEmp",service.read(vo));
+        return "employees/getList";
     }
 }
