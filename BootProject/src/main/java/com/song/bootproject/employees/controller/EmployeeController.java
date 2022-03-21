@@ -28,6 +28,6 @@ public class EmployeeController {
         EmployeeVO vo = new EmployeeVO();
         vo.setEmployeeId(id);
         model.addAttribute("getEmp",service.read(vo));
-        return "employees/getList";
+        return "employees/getUser";
     }
 }

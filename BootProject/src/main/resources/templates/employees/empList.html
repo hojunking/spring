@@ -32,8 +32,8 @@
                             </thead>
                             <tbody>
                             <th:block th:each="emp : ${list}">
-                                <tr>
-                                    <td th:text="${emp.employeeId}"></td>
+                                <tr >
+                                    <td th:text="${emp.employeeId}" th:data-employeeId="${emp.employeeId}" onclick="getEmp(this)"></td>
                                     <td th:text="${emp.firstName}"></td>
                                     <td th:text="${emp.lastName}"></td>
                                     <td th:text="${emp.email}"></td>
@@ -53,6 +53,24 @@
             </div>
 
         </div>
+    </th:block>
+    <th:block layout:fragment="script">
+        <script>
+            function getEmp(obj) {
+                let employeeId = $(obj).attr('data-employeeId');
+                $.ajax({
+                    url: "/getEmp/"+employeeId,
+                    method: "get",
+                    success: function() {
+                        location.href="/employees/getUser/"+employeeId;
+                    },
+                    error: function(e){
+                        console.error(e);
+                    }
+
+                });
+            } //function 종료
+        </script>
     </th:block>
 </body>
 </html>
