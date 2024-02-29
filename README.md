@@ -1,2 +1,6 @@
-# kill spring web
-스터디 스프링 프레임워크 & 스프링부트
+## Spring Framework & Springboot
+- Spring study record
+  
+  1. What is a Framework?
+    A bundle of codes that form the skeleton or foundation.
+  2. Why use a Framework?
